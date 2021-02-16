@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { AccumulationChartAllModule, ChartAllModule, RangeNavigatorAllModule } from '@syncfusion/ej2-angular-charts';
 
 @NgModule({
   declarations: [
@@ -10,7 +12,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DateTimePickerModule,
+    ChartAllModule,
+    RangeNavigatorAllModule,
+    AccumulationChartAllModule
   ],
   providers: [],
   bootstrap: [AppComponent]
