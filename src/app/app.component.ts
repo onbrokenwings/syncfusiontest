@@ -1,12 +1,19 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ChartComponent } from '@syncfusion/ej2-angular-charts';
+import { ColorPickerComponent, ColorPickerEventArgs, OpenEventArgs } from '@syncfusion/ej2-angular-inputs';
+import { L10n, defaultCulture, setCulture, loadCldr } from '@syncfusion/ej2-base';
 
+setCulture('es-ES');
+
+declare let require: Function;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  public colorSeries : string = '#0db1e7';
 
   public primaryXAxis: Object = {
     valueType: 'DateTime',
@@ -31,24 +38,54 @@ export class AppComponent {
     width: 5
   };
 
-  private count : number = 0;
+  private count: number = 0;
   starting: number = 60;
   year: number = 1970;
   public dataA01: Object[] = [];
-  interval : any;
+  interval: any;
   @ViewChild('chart') public chart: ChartComponent;
+  @ViewChild('colorpicker') public colorPicker: ColorPickerComponent;
 
   constructor() {
+    loadCldr(
+      require('../../node_modules/cldr-data/supplemental/numberingSystems.json'),
+      require('../../node_modules/cldr-data/main/es/ca-gregorian.json'),
+      require('../../node_modules/cldr-data/main/es/currencies.json'),
+      require('../../node_modules/cldr-data/main/es/numbers.json'),
+      require('../../node_modules/cldr-data/main/es/timeZoneNames.json')
+    );
+    L10n.load({
+      'es-ES': {
+          'colorpicker': {
+              'Apply': 'Aceptar',
+              'Cancel': 'Cancelar',
+              'ModeSwitcher': 'Modo'
+          }
+      }
+    });
+    
     this.dataA01 = this.getCompleteData();
     this.getLiveData();
   }
-  
+
+  ngOnInit(): void {
+    console.log(`App Culture is: [${defaultCulture}]`);
+  }
+
+  public change(args: ColorPickerEventArgs): void {
+    this.colorSeries = args.currentValue.hex;
+    console.log(`Color value is [${args.currentValue.hex}]`);
+}
+
+  public onOpen(args: OpenEventArgs): void {
+    console.log(`Arguments onOpen: `, args);
+  }
+
   getLiveData() {
     this.interval = setInterval(() => {
       let data = { x: new Date(this.year, (this.count + 1), this.count), y: this.getRandData() };
       this.dataA01.push(data);
       this.dataA01.shift();
-      console.log(`Generating data ... [${this.count}]: `, data);
       this.count++;
       this.chart.refresh();
     }, 1000)

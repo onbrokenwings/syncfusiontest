@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { AccumulationChartAllModule, ChartAllModule, RangeNavigatorAllModule } from '@syncfusion/ej2-angular-charts';
+import { ColorPickerModule } from '@syncfusion/ej2-angular-inputs';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { AccumulationChartAllModule, ChartAllModule, RangeNavigatorAllModule } f
     DateTimePickerModule,
     ChartAllModule,
     RangeNavigatorAllModule,
-    AccumulationChartAllModule
+    AccumulationChartAllModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

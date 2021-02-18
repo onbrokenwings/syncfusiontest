@@ -21,6 +21,8 @@
     "@angular/router": "~7.2.0",
     "@syncfusion/ej2-angular-calendars": "^18.4.42",
     "@syncfusion/ej2-angular-charts": "^18.4.42",
+    "@syncfusion/ej2-angular-inputs": "^18.4.43",
+    "cldr-data": "^36.0.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
