@@ -43,8 +43,8 @@ export class AppComponent implements OnInit {
   year: number = 1970;
   public dataA01: Object[] = [];
   interval: any;
-  @ViewChild('chart') public chart: ChartComponent;
-  @ViewChild('colorpicker') public colorPicker: ColorPickerComponent;
+  @ViewChild('chart', { static: true }) public chart: ChartComponent;
+  @ViewChild('colorpicker', { static: true }) public colorPicker: ColorPickerComponent;
 
   constructor() {
     loadCldr(
