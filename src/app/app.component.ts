@@ -3,6 +3,16 @@ import { ChartComponent } from '@syncfusion/ej2-angular-charts';
 import { ColorPickerComponent, ColorPickerEventArgs, OpenEventArgs } from '@syncfusion/ej2-angular-inputs';
 import { L10n, defaultCulture, setCulture, loadCldr } from '@syncfusion/ej2-base';
 
+L10n.load({
+  'es-ES': {
+      'colorpicker': {
+          'Apply': 'Aceptar',
+          'Cancel': 'Cancelar',
+          'ModeSwitcher': 'Modo'
+      }
+  }
+});
+
 setCulture('es-ES');
 
 declare let require: Function;
@@ -54,15 +64,6 @@ export class AppComponent implements OnInit {
       require('../../node_modules/cldr-data/main/es/numbers.json'),
       require('../../node_modules/cldr-data/main/es/timeZoneNames.json')
     );
-    L10n.load({
-      'es-ES': {
-          'colorpicker': {
-              'Apply': 'Aceptar',
-              'Cancel': 'Cancelar',
-              'ModeSwitcher': 'Modo'
-          }
-      }
-    });
     
     this.dataA01 = this.getCompleteData();
     this.getLiveData();
