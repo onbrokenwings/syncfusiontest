@@ -1,0 +1,7 @@
+<ejs-chart [id]='name' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis' [tooltip]='{ enable: false }'
+    [chartArea]='{ border: { width: 0.1 } }' width='125' height='60' [legendSettings]="legendSettings" #chart>
+    <e-series-collection>
+        <e-series [dataSource]='dataA01' type='Line' xName='x' yName='y' name='A01' width=1
+            [animation]='{ enable: false }' [marker]="marker" [fill]="colorSeries"></e-series>
+    </e-series-collection>
+</ejs-chart>

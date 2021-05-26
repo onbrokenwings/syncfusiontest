@@ -3,13 +3,8 @@
   <div id="control_wrapper">
     <input ejs-colorpicker #colorpicker type="color" id="color-picker" locale="es-ES" [value]="colorSeries" (change)="change($event)" />`
   </div>
-  <div>
-    <ejs-chart id='chartcontainer' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'
-        [tooltip]='{ enable: false }' [chartArea]='{ border: { width: 0.1 } }' width='125' height='60' [legendSettings]="legendSettings" #chart>
-        <e-series-collection>
-            <e-series [dataSource]='dataA01' type='Line' xName='x' yName='y' name='A01' width=2 [animation]='{ enable: false }' [marker]="marker" [fill]="colorSeries"></e-series>
-        </e-series-collection>
-    </ejs-chart>
+  <div *ngFor="let rowIndex of createIndexes(50)">
+    <sparkline-chart [colorSeries]="colorSeries" name="chart{{rowIndex}}"></sparkline-chart>
   </div>
 </div>
 

@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { AccumulationChartAllModule, ChartAllModule, RangeNavigatorAllModule } from '@syncfusion/ej2-angular-charts';
 import { ColorPickerModule } from '@syncfusion/ej2-angular-inputs';
+import { SparklineChartComponent } from './sparkline-chart/sparkline-chart.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SparklineChartComponent
   ],
   imports: [
     BrowserModule,
