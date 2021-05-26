@@ -5,11 +5,11 @@ import { L10n, defaultCulture, setCulture, loadCldr } from '@syncfusion/ej2-base
 
 L10n.load({
   'es-ES': {
-      'colorpicker': {
-          'Apply': 'Aceptar',
-          'Cancel': 'Cancelar',
-          'ModeSwitcher': 'Modo'
-      }
+    'colorpicker': {
+      'Apply': 'Aceptar',
+      'Cancel': 'Cancelar',
+      'ModeSwitcher': 'Modo'
+    }
   }
 });
 
@@ -23,13 +23,14 @@ declare let require: Function;
 })
 export class AppComponent implements OnInit {
 
-  public colorSeries : string = '#0db1e7';
+  public colorSeries: string = '#0db1e7';
 
   public primaryXAxis: Object = {
     valueType: 'DateTime',
     labelFormat: 'yy-MMM',
     intervalType: 'Months',
-    majorGridLines: { width: 0 }
+    majorGridLines: { width: 0 },
+    visible: false
   };
 
   public primaryYAxis: Object = {
@@ -38,14 +39,20 @@ export class AppComponent implements OnInit {
     minimum: 50,
     maximum: 90,
     interval: 20,
-    lineStyle: { width: 1 },
-    majorGridLines: { width: 1 }
+    lineStyle: { width: 0 },
+    majorGridLines: { width: 1 },
+    visible: false
   };
 
+  public legendSettings: Object = {
+    visible: false,
+    position: 'Top'
+  }
+
   public marker: Object = {
-    visible: true,
-    height: 5,
-    width: 5
+    visible: false,
+    height: 1,
+    width: 1
   };
 
   private count: number = 0;
@@ -64,7 +71,7 @@ export class AppComponent implements OnInit {
       require('../../node_modules/cldr-data/main/es/numbers.json'),
       require('../../node_modules/cldr-data/main/es/timeZoneNames.json')
     );
-    
+
     this.dataA01 = this.getCompleteData();
     this.getLiveData();
   }
@@ -76,7 +83,7 @@ export class AppComponent implements OnInit {
   public change(args: ColorPickerEventArgs): void {
     this.colorSeries = args.currentValue.hex;
     console.log(`Color value is [${args.currentValue.hex}]`);
-}
+  }
 
   public onOpen(args: OpenEventArgs): void {
     console.log(`Arguments onOpen: `, args);
